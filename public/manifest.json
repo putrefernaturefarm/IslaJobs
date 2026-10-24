@@ -1,0 +1,26 @@
+{
+  "name": "IslaJobs",
+  "short_name": "IslaJobs",
+  "description": "Find work. Hire help. Right here on the island.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F5F4F1",
+  "theme_color": "#1565D8",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["productivity", "utilities"],
+  "lang": "en-PH"
+}

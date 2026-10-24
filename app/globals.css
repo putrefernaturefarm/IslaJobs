@@ -1,0 +1,354 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════════════════ */
+/* ISLAJOBS DESIGN TOKENS — DO NOT MODIFY WITHOUT AUTHORIZATION */
+/* Direction: warm island trust — not corporate-blue template.  */
+/* ═══════════════════════════════════════════════════════════ */
+
+:root {
+  /* PRIMARY — Dinagat ocean blue (deliberately NOT Facebook's #1877F2) */
+  --color-primary: #1565D8;
+  --color-primary-deep: #1E3A8A;
+  --color-primary-dark: #0E4DAE;
+  --color-primary-active: #0C3F8F;
+  --color-primary-light: #E7F0FD;
+  --color-primary-xlight: #F2F7FE;
+
+  /* ACCENT — warm amber, used sparingly for earnings/ratings/worker cues */
+  --color-accent: #D97706;
+  --color-accent-dark: #B45309;
+  --color-accent-light: #FFF3E0;
+
+  /* BACKGROUND — warm sand, not cold corporate gray */
+  --color-bg-page: #F5F4F1;
+  --color-bg-card: #FFFFFF;
+  --color-bg-sunken: #EFEBE3;
+  --color-bg-input: #FFFFFF;
+
+  /* TEXT — warm ink, not Facebook's blue-gray */
+  --color-text-primary: #1A1A1A;
+  --color-text-secondary: #6B6560;
+  --color-text-tertiary: #9A9590;
+  --color-text-disabled: #C0BCB8;
+  --color-text-white: #FFFFFF;
+
+  /* BORDERS */
+  --color-border: #E4E0D8;
+  --color-border-focus: #1565D8;
+  --color-hover: #ECE8E0;
+
+  /* SEMANTIC */
+  --color-success: #16A34A;
+  --color-success-light: #E6F7EC;
+  --color-error: #E11D48;
+  --color-error-light: #FFF1F2;
+  --color-warning: #D97706;
+  --color-warning-light: #FFF3E0;
+
+  /* NAVIGATION */
+  --color-nav-active: #1565D8;
+  --color-nav-inactive: #9A9590;
+  --color-nav-bg: #FAF9F7;
+  --color-nav-border: #E4E0D8;
+
+  /* TYPOGRAPHY */
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* SPACING */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 20px;
+  --space-2xl: 24px;
+  --space-3xl: 32px;
+
+  /* BORDER RADIUS — deliberate rhythm, not uniform everywhere */
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+
+  /* SHADOWS — warm-tinted, two depths */
+  --shadow-card: 0 1px 3px rgba(26,22,18,0.07), 0 6px 18px rgba(26,22,18,0.05);
+  --shadow-elevated: 0 12px 30px rgba(21,101,216,0.24);
+  --shadow-nav: 0 -1px 0px rgba(26,22,18,0.08);
+}
+
+/* ═══════════════════════════════════════════════════════════ */
+/* DARK MODE — same system, inverted surfaces                  */
+/* ═══════════════════════════════════════════════════════════ */
+:root[data-theme='dark'] {
+  --color-primary: #4A8FEF;
+  --color-primary-deep: #2E5BB8;
+  --color-primary-dark: #6BA3F5;
+  --color-primary-active: #7FB0F7;
+  --color-primary-light: #1C2B42;
+  --color-primary-xlight: #16212F;
+
+  --color-accent: #E8A23D;
+  --color-accent-dark: #F0B666;
+  --color-accent-light: #2E2317;
+
+  --color-bg-page: #17161A;
+  --color-bg-card: #211F24;
+  --color-bg-sunken: #2A282E;
+  --color-bg-input: #211F24;
+
+  --color-text-primary: #F2F0ED;
+  --color-text-secondary: #ABA6A0;
+  --color-text-tertiary: #7D7873;
+  --color-text-disabled: #55514C;
+  --color-text-white: #FFFFFF;
+
+  --color-border: #35333A;
+  --color-border-focus: #4A8FEF;
+  --color-hover: #2A282E;
+
+  --color-success: #3EC46D;
+  --color-success-light: #142A1D;
+  --color-error: #F0557D;
+  --color-error-light: #2E1620;
+  --color-warning: #E8A23D;
+  --color-warning-light: #2E2317;
+
+  --color-nav-active: #4A8FEF;
+  --color-nav-inactive: #7D7873;
+  --color-nav-bg: #1C1B1F;
+  --color-nav-border: #35333A;
+
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.3), 0 6px 18px rgba(0,0,0,0.25);
+  --shadow-elevated: 0 12px 30px rgba(74,143,239,0.28);
+  --shadow-nav: 0 -1px 0px rgba(0,0,0,0.3);
+}
+
+/* BASE RESETS */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: var(--font-sans);
+  background-color: var(--color-bg-page);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Mobile-first: constrain content to phone width */
+.app-container {
+  max-width: 430px;
+  margin: 0 auto;
+  min-height: 100dvh;
+  background-color: var(--color-bg-page);
+  position: relative;
+}
+
+/* PAGE WRAPPER — adds padding for bottom nav */
+.page-content {
+  padding-bottom: calc(64px + env(safe-area-inset-bottom));
+  min-height: 100dvh;
+}
+
+/* DISPLAY TYPE — reserved for page headlines, used sparingly for voice */
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+/* ═══════════════════════════════════════════════════════════ */
+/* COMPONENT LAYER                                             */
+/* ═══════════════════════════════════════════════════════════ */
+
+@layer components {
+  /* INPUT FIELD */
+  .input-field {
+    @apply w-full h-[52px] rounded-[14px] px-4 text-[15px] font-normal;
+    background: var(--color-bg-sunken);
+    color: var(--color-text-primary);
+    border: 1.5px solid transparent;
+    outline: none;
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+  }
+
+  .input-field::placeholder {
+    color: var(--color-text-disabled);
+  }
+
+  .input-field:focus {
+    background: #fff;
+    border-color: var(--color-border-focus);
+    color: #1A1A1A;
+  }
+
+  .input-field.error {
+    border-color: var(--color-error);
+    background: #fff;
+    color: #1A1A1A;
+  }
+
+  /* Fix browser autofill overriding text/background colors */
+  .input-field:-webkit-autofill,
+  .input-field:-webkit-autofill:hover,
+  .input-field:-webkit-autofill:focus {
+    -webkit-text-fill-color: #1A1A1A;
+    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
+  /* FORM LABEL */
+  .form-label {
+    @apply block text-[11px] font-bold uppercase tracking-wider mb-1;
+    color: var(--color-text-secondary);
+  }
+
+  /* PRIMARY BUTTON */
+  .btn-primary {
+    @apply w-full h-[52px] text-white text-[16px] font-semibold rounded-full;
+    @apply flex items-center justify-center gap-2;
+    @apply transition-colors duration-150;
+    background: var(--color-primary);
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--color-primary-dark);
+  }
+
+  .btn-primary:active {
+    background-color: var(--color-primary-active);
+  }
+
+  .btn-primary:disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+
+  /* SECONDARY BUTTON (outline) */
+  .btn-secondary {
+    @apply w-full h-[52px] bg-transparent text-[16px] font-semibold rounded-full;
+    @apply flex items-center justify-center gap-2;
+    @apply transition-colors duration-150;
+    color: var(--color-text-primary);
+    border: 1.5px solid var(--color-border);
+    cursor: pointer;
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--color-hover);
+  }
+
+  /* GHOST BUTTON */
+  .btn-ghost {
+    @apply bg-transparent border-none text-[15px] font-medium;
+    @apply flex items-center justify-center gap-1;
+    color: var(--color-primary);
+    cursor: pointer;
+    padding: 8px 12px;
+  }
+
+  /* DANGER BUTTON */
+  .btn-danger {
+    @apply w-full h-[52px] text-[16px] font-semibold rounded-full;
+    @apply flex items-center justify-center gap-2;
+    background: var(--color-error-light);
+    color: var(--color-error);
+    border: none;
+    cursor: pointer;
+  }
+
+  /* CARD */
+  .card {
+    @apply rounded-[20px] p-4;
+    background: var(--color-bg-card);
+    box-shadow: var(--shadow-card);
+  }
+
+  /* ELEVATED CARD — hero / CTA surfaces, tinted shadow */
+  .card-elevated {
+    @apply rounded-[24px] p-5;
+    box-shadow: var(--shadow-elevated);
+  }
+
+  /* BADGE */
+  .badge {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-[8px] text-[11px] font-semibold;
+  }
+
+  .badge-primary {
+    @apply badge;
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+  }
+
+  .badge-success {
+    @apply badge;
+    background: var(--color-success-light);
+    color: var(--color-success);
+  }
+
+  .badge-error {
+    @apply badge;
+    background: var(--color-error-light);
+    color: var(--color-error);
+  }
+
+  .badge-warning {
+    @apply badge;
+    background: var(--color-warning-light);
+    color: var(--color-warning);
+  }
+
+  .badge-neutral {
+    @apply badge;
+    background: var(--color-bg-sunken);
+    color: var(--color-text-secondary);
+  }
+
+  /* SECTION HEADING */
+  .section-heading {
+    @apply text-[18px] font-semibold;
+    color: var(--color-text-primary);
+  }
+
+  /* DIVIDER */
+  .divider {
+    @apply w-full h-px;
+    background: var(--color-border);
+  }
+
+  /* ERROR TEXT */
+  .error-text {
+    @apply text-[13px] mt-1;
+    color: var(--color-error);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════ */
+/* SCROLLBAR HIDE (mobile-style)                               */
+/* ═══════════════════════════════════════════════════════════ */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ═══════════════════════════════════════════════════════════ */
+/* SAFE AREA (iOS PWA notch support)                           */
+/* ═══════════════════════════════════════════════════════════ */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
