@@ -1,4 +1,5 @@
 'use client'
+import { Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -29,7 +30,7 @@ const schema = z.object({
 
 type FormValues = z.infer<typeof schema>
 
-export default function WorkerSetupPage() {
+function WorkerSetupContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const isUpgrade = searchParams.get('upgrade') === '1'
@@ -139,5 +140,13 @@ export default function WorkerSetupPage() {
         </form>
       </div>
     </div>
+  )
+}
+
+export default function WorkerSetupPage() {
+  return (
+    <Suspense>
+      <WorkerSetupContent />
+    </Suspense>
   )
 }

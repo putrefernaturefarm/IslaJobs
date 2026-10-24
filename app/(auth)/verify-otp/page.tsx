@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useRef, useState } from 'react'
+import { Suspense, useEffect, useRef, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { Smartphone } from 'lucide-react'
 import { createBrowserClient } from '@/lib/supabase/client'
@@ -10,7 +10,7 @@ import { toStoragePhone } from '@/lib/utils'
 const OTP_LENGTH = 6
 const RESEND_SECONDS = 60
 
-export default function VerifyOtpPage() {
+function VerifyOtpContent() {
   const router = useRouter()
   const params = useSearchParams()
   const mode = params.get('mode') ?? 'login'
@@ -215,5 +215,13 @@ export default function VerifyOtpPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function VerifyOtpPage() {
+  return (
+    <Suspense>
+      <VerifyOtpContent />
+    </Suspense>
   )
 }
